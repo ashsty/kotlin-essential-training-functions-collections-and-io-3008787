@@ -15,7 +15,7 @@ fun checkType(input: Any) {
 fun checkTypeWithNull(input: Any?) {
     when (input) {
         null -> println("$input is null") // SMART CASTING
-        is String -> println("$input is String of length ${input.length}")
+        is String? -> println("$input is String of length ${input.length}")
     }
 }
 
