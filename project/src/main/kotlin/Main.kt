@@ -3,12 +3,18 @@ fun printFormattedName(firstName: String, lastName: String, nameFormatter: (Stri
     println(nameFormatter(firstName, lastName))
 }
 
-fun main() {
-    printFormattedName("John", "Mike") { firstName, lastName ->
-        "Mr $firstName $lastName" // Mr John Mike
-    }
+val basicFormatter: (String, String) -> String = { first, last ->
+    "$first $last"
+}
 
-    printFormattedName("Mina", "Park") { firstName, lastName ->
-        "Ms $lastName $firstName" // Ms Park Mina
+val fancyFormatter: (String, String) -> String = { first, last ->
+    "The first name is $first, last name is $last"
+}
+
+fun main() {
+    printFormattedName("John", "Mike", basicFormatter) // John Mike
+    printFormattedName("Mina", "Park", fancyFormatter) // The first name is Mina, last name is Park
+    printFormattedName("Homer", "Simpson") { first, last ->
+        "$first, $last" // Homer, Simpson
     }
 }
